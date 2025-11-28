@@ -4,7 +4,7 @@ services:
     env: python
     buildDir: .   # root of the repo
     buildCommand: "./build.sh"
-    startCommand: "cd Server/report_backend && gunicorn report_backend.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "cd report_backend && gunicorn report_backend.asgi:application -k uvicorn.workers.UvicornWorker"
 
     envVars:
       - key: DJANGO_SETTINGS_MODULE

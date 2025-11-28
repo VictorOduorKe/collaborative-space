@@ -6,7 +6,7 @@ set -o errexit
 pip install -r requirements.txt
 
 # Navigate to the Django project directory
-cd Server/report_backend
+cd report_backend
 
 # Collect static files
 python manage.py collectstatic --noinput
