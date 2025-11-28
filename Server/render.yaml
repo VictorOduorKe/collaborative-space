@@ -2,9 +2,9 @@ services:
   - type: web
     name: gbv-backend
     env: python
-
+    buildDir: .   # root of your repo
     buildCommand: "./build.sh"
-    startCommand: "gunicorn report_backend.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "cd Server/report_backend && gunicorn report_backend.asgi:application -k uvicorn.workers.UvicornWorker"
 
     envVars:
       - key: DJANGO_SETTINGS_MODULE
