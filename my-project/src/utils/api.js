@@ -2,7 +2,7 @@
 // src/utils/api.js
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://safespacekenya.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://gbv-plp-hacks.onrender.com/api';
 
 // Create axios instance
 const api = axios.create({
