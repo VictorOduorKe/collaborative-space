@@ -29,7 +29,7 @@ import {
 } from '@mui/material';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://gbv-plp-hacks.onrender.com';
 
 function PsychologistDashboard() {
   const navigate = useNavigate();

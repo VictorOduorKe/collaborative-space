@@ -53,7 +53,7 @@ export default function Updates() {
       const token = getAuthToken();
       if (!token) return;
 
-      const response = await fetch('https://safespacekenya.onrender.com/api/updates/', {
+      const response = await fetch('https://gbv-plp-hacks.onrender.com/api/updates/', {
         headers: { 'Authorization': `Token ${token}` }
       });
 
@@ -107,7 +107,7 @@ export default function Updates() {
       const token = getAuthToken();
       if (!token) return;
 
-      const response = await fetch(`https://safespacekenya.onrender.com/api/updates/${itemToDelete.id}/`, {
+      const response = await fetch(`https://gbv-plp-hacks.onrender.com/api/updates/${itemToDelete.id}/`, {
         method: 'DELETE',
         headers: { 'Authorization': `Token ${token}` }
       });
@@ -154,7 +154,7 @@ export default function Updates() {
       const token = getAuthToken();
       if (!token) return;
 
-      const response = await fetch('https://safespacekenya.onrender.com/api/updates/', {
+      const response = await fetch('https://gbv-plp-hacks.onrender.com/api/updates/', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ export default function Updates() {
       const token = getAuthToken();
       if (!token) return;
 
-      const response = await fetch(`https://safespacekenya.onrender.com/api/updates/${editingUpdateId}/`, {
+      const response = await fetch(`https://gbv-plp-hacks.onrender.com/api/updates/${editingUpdateId}/`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

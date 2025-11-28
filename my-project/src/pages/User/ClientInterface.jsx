@@ -394,7 +394,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, MapPin, Star, User, ArrowRight, Grid, List } from 'lucide-react';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://gbv-plp-hacks.onrender.com';
 
 function PsychologistList() {
   const [psychologists, setPsychologists] = useState([]);

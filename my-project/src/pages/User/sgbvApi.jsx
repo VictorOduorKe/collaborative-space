@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000/api';  // Django development server
+const API_BASE_URL = 'https://gbv-plp-hacks.onrender.com/api';  // Django development server
 
 export const submitReport = async (reportData) => {
   const formData = new FormData();
