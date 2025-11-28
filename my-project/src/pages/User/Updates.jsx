@@ -58,6 +58,7 @@ export default function UpdatesScreen() {
         // Fetch updates if not in cache or expired
         if (!cachedUpdates) {
           const updatesResponse = await fetch(`${API_BASE_URL}/public/updates/`);
+          console.log("updates ", updatesResponse)
           if (!updatesResponse.ok) throw new Error('Failed to fetch updates');
           const updatesData = await updatesResponse.json();
           setUpdates(updatesData);
