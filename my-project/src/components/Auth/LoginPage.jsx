@@ -3,7 +3,7 @@
 // import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://safespacekenya.onrender.com/api';
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://gbv-plp-hacks.onrender.com/api';
 
 // export default function Login() {
 //   const [email, setEmail] = useState('');
@@ -146,7 +146,7 @@ import Lottie from 'react-lottie-player';
 import psychologistLogin from '/src/assets/animations/psychologistLogin.json';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://safespacekenya.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://gbv-plp-hacks.onrender.com/api';
 
 export default function Login() {
   const [email, setEmail] = useState('');

@@ -4,7 +4,7 @@
 // import axios from 'axios';
 // import Select from 'react-select';
 
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://safespacekenya.onrender.com/api';
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://gbv-plp-hacks.onrender.com/api';
 
 // const languageOptions = [
 //   { value: 'English', label: 'English' },
@@ -236,7 +236,7 @@ import Lottie from 'react-lottie-player';
 import psychologistLogin from '/src/assets/animations/psychologistLogin.json';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://safespacekenya.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://gbv-plp-hacks.onrender.com/api';
 
 export default function Register() {
   const [formData, setFormData] = useState({

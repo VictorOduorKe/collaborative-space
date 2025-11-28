@@ -41,7 +41,7 @@ export default function AdminLayout({ children }) {
     // Fetch admin details
     const fetchAdminDetails = async () => {
       try {
-        const response = await axios.get('https://safespacekenya.onrender.com/api/admin/details/', {
+        const response = await axios.get('https://gbv-plp-hacks.onrender.com/api/admin/details/', {
           headers: {
             'Authorization': `Token ${localStorage.getItem('auth_token')}`
           }

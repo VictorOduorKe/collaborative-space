@@ -54,7 +54,7 @@
 //     setLoginError('');
   
 //     try {
-//       const response = await axios.post('http://localhost:8000/api/login/', {
+//       const response = await axios.post('https://gbv-plp-hacks.onrender.com/api/login/', {
 //         email: formData.email,
 //         password: formData.password,
 //       }, {
@@ -261,7 +261,7 @@ const LoginForm = () => {
     setLoginError('');
   
     try {
-      const response = await axios.post('http://localhost:8000/api/login/', {
+      const response = await axios.post('https://gbv-plp-hacks.onrender.com/api/login/', {
         email: formData.email,
         password: formData.password,
       }, {
