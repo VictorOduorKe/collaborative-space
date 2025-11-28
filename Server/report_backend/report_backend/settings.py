@@ -29,6 +29,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'safespacekenya.onrender.com',
+    'collaborative-space.onrender.com',
     'localhost',
     'safespacekenya.co.ke',       
     'www.safespacekenya.co.ke', 
@@ -85,6 +86,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     # "http://localhost:5173",
     # "http://127.0.0.1:5173",
+    'https://collaborative-space.onrender.com',
     'https://gbv4.onrender.com',
     "https://safespacekenya.co.ke", 
     "https://www.safespacekenya.co.ke",
