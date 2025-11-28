@@ -23,11 +23,11 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://gbv4.onrender.com' 
+    'https://collaborative-space.onrender.com' 
 ]
 CORS_ALLOW_ALL_ORIGINS = True  # For development only, tighten for production
 CORS_ALLOW_CREDENTIALS = True
-ALLOWED_HOSTS = [ 'http://safespacekenya.onrender.com', ]
+ALLOWED_HOSTS = [ 'https://collaborative-space.onrender.com', ]
 
 STORAGES = {
     'default': {
