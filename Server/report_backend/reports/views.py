@@ -799,7 +799,7 @@ def fetch_instructions(request):
 
             # Gemini API configuration
             GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-            API_KEY = "AIzaSyAJmMe2vyfRS2OtXgPZlIsx5Uv5t6hPan8"
+            API_KEY = "AIzaSyBPRVACGYu9QtkrlJ8wzGBtbHpoHTJelaQ"
             
             prompt = (
                 f"Provide 3-5 concise bullet points for personal safety steps an individual can take during {category}. "
@@ -853,15 +853,32 @@ def fetch_instructions(request):
             try:
                 candidates = response_data.get('candidates', [])
                 if not candidates:
-                    raise ValueError("No candidates in response")
-                
-                content = candidates[0].get('content', {})
-                parts = content.get('parts', [])
-                if not parts:
-                    raise ValueError("No parts in content")
-                
-                instructions = parts[0].get('text', '').strip()
-                
+                    raise ValueError(f"No candidates in response: {response_data}")
+
+                candidate = candidates[0]
+                text_chunks = []
+
+                # Primary path: v1beta generateContent style
+                content = candidate.get('content', {})
+                parts = content.get('parts', []) or []
+                for part in parts:
+                    part_text = part.get('text')
+                    if isinstance(part_text, str):
+                        text_chunks.append(part_text)
+
+                instructions = "".join(text_chunks).strip()
+
+                if not instructions:
+                    print(f"Request ID: {request_id}, Gemini returned no text content, raw response: {response_data}")
+                    # Fallback: provide static, generic safety steps so the UI still works
+                    instructions = (
+                        "1. Move to a safe location away from the person causing harm if you can do so safely.\n"
+                        "2. Contact a trusted friend, family member, or colleague and let them know what happened.\n"
+                        "3. If you are in immediate danger, call your local emergency number right away.\n"
+                        "4. Document what happened, including dates, times, locations, and any witnesses if you feel able.\n"
+                        "5. Consider reaching out to a local support organization, counselor, or HR/safety office for further help."
+                    )
+
                 # Ensure we only get the bullet points if they exist
                 bullet_start = instructions.find("1. ")
                 if bullet_start != -1:
@@ -872,6 +889,7 @@ def fetch_instructions(request):
                     "processing_time": processing_time
                 })
             except Exception as e:
+                print(f"Request ID: {request_id}, Error parsing Gemini response: {e}, raw response: {response_data}")
                 return JsonResponse({"error": "Failed to parse AI response"}, status=500)
 
         except json.JSONDecodeError:
