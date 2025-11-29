@@ -798,8 +798,8 @@ def fetch_instructions(request):
                 return JsonResponse({"error": "Category is required"}, status=400)
 
             # Gemini API configuration
-            GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-            API_KEY = "AIzaSyCxPkcSec_yliywUVaVEGOKf6Woh9zGhY0"
+            GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+            API_KEY = "AIzaSyAJmMe2vyfRS2OtXgPZlIsx5Uv5t6hPan8"
             
             prompt = (
                 f"Provide 3-5 concise bullet points for personal safety steps an individual can take during {category}. "
