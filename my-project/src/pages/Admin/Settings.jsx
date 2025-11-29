@@ -116,7 +116,7 @@ export default function SettingsPage() {
       if (credentialData.new_password) payload.new_password = credentialData.new_password;
       
       const response = await axios.post(
-        'https://safespacekenya.onrender.com/api/update-credentials/',
+        'https://gbv-plp-hacks.onrender.com/api/update-credentials/',
         payload,
         {
           headers: {

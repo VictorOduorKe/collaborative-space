@@ -55,7 +55,7 @@ export default function AdminLayout({ children }) {
     // Fetch new reports count
     const fetchNewReportsCount = async () => {
       try {
-        const response = await axios.get('https://safespacekenya.onrender.com/api/reports/count/?status=New', {
+        const response = await axios.get('https://gbv-plp-hacks.onrender.com/api/reports/count/?status=New', {
           headers: {
             'Authorization': `Token ${localStorage.getItem('auth_token')}`
           }

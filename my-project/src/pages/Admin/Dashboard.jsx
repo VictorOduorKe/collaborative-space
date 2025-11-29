@@ -61,7 +61,7 @@ export default function Dashboard() {
         return;
       }
 
-      const response = await fetch('https://safespacekenya.onrender.com/api/reports/list/', {
+      const response = await fetch('https://gbv-plp-hacks.onrender.com/api/reports/list/', {
         headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
