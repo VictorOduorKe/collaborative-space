@@ -1,8 +1,10 @@
-
-import { Shield, Info, BookOpen, Scale, Heart, FileText, Award, ExternalLink } from 'lucide-react';
+import { Shield, Info, BookOpen, Scale, Heart, FileText, Award, ExternalLink, UserCog, Stethoscope, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import ContactSection from './ContactSection';
 
 export default function InformationScreen() {
+  const navigate = useNavigate();
+
   return (
     <div className="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
       {/* Hero Section */}
@@ -197,6 +199,64 @@ export default function InformationScreen() {
               </div>
             </div>
           </a>
+        </div>
+      </div>
+
+      {/* Staff Login Access Section */}
+      <div className="bg-white rounded-xl p-4 sm:p-6 shadow-xs sm:shadow-sm mb-6 sm:mb-8 border border-gray-100">
+        <div className="flex items-center mb-4 sm:mb-5">
+          <div className="bg-indigo-50 p-2 sm:p-3 rounded-full">
+            <UserCog size={20} className="text-indigo-700" />
+          </div>
+          <h3 className="text-lg sm:text-xl font-semibold ml-2 sm:ml-3">Staff Access</h3>
+        </div>
+        
+        <p className="text-gray-600 text-sm sm:text-base mb-4">
+          Are you a staff member or psychologist? Access your dashboard below.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          {/* Admin Login Card */}
+          <div 
+            onClick={() => navigate('/admin/login')}
+            className="group cursor-pointer bg-gradient-to-br from-blue-50 to-blue-100 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all border-2 border-blue-200 hover:border-blue-400"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="bg-blue-200 p-3 rounded-full group-hover:bg-blue-300 transition-colors">
+                <UserCog size={24} className="text-blue-700" />
+              </div>
+              <ArrowRight size={20} className="text-blue-600 group-hover:translate-x-1 transition-transform" />
+            </div>
+            <h4 className="font-semibold text-blue-900 text-lg mb-2">Admin Portal</h4>
+            <p className="text-blue-700 text-sm mb-3">
+              Access the administrative dashboard to manage reports, users, and system settings.
+            </p>
+            <div className="flex items-center text-blue-600 text-sm font-medium">
+              <span>Login as Admin</span>
+              <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+
+          {/* Psychologist Login Card */}
+          <div 
+            onClick={() => navigate('/dashboard/login')}
+            className="group cursor-pointer bg-gradient-to-br from-green-50 to-green-100 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all border-2 border-green-200 hover:border-green-400"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="bg-green-200 p-3 rounded-full group-hover:bg-green-300 transition-colors">
+                <Stethoscope size={24} className="text-green-700" />
+              </div>
+              <ArrowRight size={20} className="text-green-600 group-hover:translate-x-1 transition-transform" />
+            </div>
+            <h4 className="font-semibold text-green-900 text-lg mb-2">Psychologist Portal</h4>
+            <p className="text-green-700 text-sm mb-3">
+              Access your professional dashboard to manage appointments and provide support services.
+            </p>
+            <div className="flex items-center text-green-600 text-sm font-medium">
+              <span>Login as Psychologist</span>
+              <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
