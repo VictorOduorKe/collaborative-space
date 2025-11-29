@@ -6,7 +6,7 @@ VICTOR ODUOR Frontend (UI/UX)
 ----------------------------------------
 LEWIS Momanyi (Backend) 
 -----------------------------------------
-JEPTUM BRENDA  (Presentation)
+JEPTUM BRENDA  (Backend)
 -----------------------------------------
 LUCY Wambui
 ------------------------------------------- 
