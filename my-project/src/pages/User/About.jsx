@@ -217,44 +217,53 @@ export default function InformationScreen() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {/* Admin Login Card */}
-          <div 
-            onClick={() => navigate('/admin/login')}
-            className="group cursor-pointer bg-gradient-to-br from-blue-50 to-blue-100 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all border-2 border-blue-200 hover:border-blue-400"
-          >
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all border-2 border-blue-200">
             <div className="flex items-center justify-between mb-3">
-              <div className="bg-blue-200 p-3 rounded-full group-hover:bg-blue-300 transition-colors">
+              <div className="bg-blue-200 p-3 rounded-full">
                 <UserCog size={24} className="text-blue-700" />
               </div>
-              <ArrowRight size={20} className="text-blue-600 group-hover:translate-x-1 transition-transform" />
             </div>
             <h4 className="font-semibold text-blue-900 text-lg mb-2">Admin Portal</h4>
-            <p className="text-blue-700 text-sm mb-3">
+            <p className="text-blue-700 text-sm mb-4">
               Access the administrative dashboard to manage reports, users, and system settings.
             </p>
-            <div className="flex items-center text-blue-600 text-sm font-medium">
-              <span>Login as Admin</span>
-              <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+            <div className="flex gap-3">
+              <button
+                onClick={() => navigate('/admin/login')}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              >
+                <span>Login</span>
+                <ArrowRight size={16} />
+              </button>
             </div>
           </div>
 
           {/* Psychologist Login Card */}
-          <div 
-            onClick={() => navigate('/dashboard/login')}
-            className="group cursor-pointer bg-gradient-to-br from-green-50 to-green-100 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all border-2 border-green-200 hover:border-green-400"
-          >
+          <div className="bg-gradient-to-br from-green-50 to-green-100 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all border-2 border-green-200">
             <div className="flex items-center justify-between mb-3">
-              <div className="bg-green-200 p-3 rounded-full group-hover:bg-green-300 transition-colors">
+              <div className="bg-green-200 p-3 rounded-full">
                 <Stethoscope size={24} className="text-green-700" />
               </div>
-              <ArrowRight size={20} className="text-green-600 group-hover:translate-x-1 transition-transform" />
             </div>
             <h4 className="font-semibold text-green-900 text-lg mb-2">Psychologist Portal</h4>
-            <p className="text-green-700 text-sm mb-3">
+            <p className="text-green-700 text-sm mb-4">
               Access your professional dashboard to manage appointments and provide support services.
             </p>
-            <div className="flex items-center text-green-600 text-sm font-medium">
-              <span>Login as Psychologist</span>
-              <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+            <div className="flex gap-3">
+              <button
+                onClick={() => navigate('/dashboard/login')}
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              >
+                <span>Login</span>
+                <ArrowRight size={16} />
+              </button>
+              <button
+                onClick={() => navigate('/dashboard/register')}
+                className="flex-1 bg-white hover:bg-green-50 text-green-700 font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 border-2 border-green-600 flex items-center justify-center gap-2"
+              >
+                <span>Sign Up</span>
+                <ArrowRight size={16} />
+              </button>
             </div>
           </div>
         </div>
