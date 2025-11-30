@@ -62,6 +62,10 @@ const LoginForm = () => {
         localStorage.setItem('admin_logged_in', 'true');
         localStorage.setItem('admin_email', embeddedEmail);
 
+        // Generate and store a random auth token for frontend use only
+        const randomToken = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        localStorage.setItem('auth_token', randomToken);
+
         // Redirect to admin dashboard
         navigate('dashboard');
       } else {
