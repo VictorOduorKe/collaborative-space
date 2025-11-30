@@ -25,7 +25,7 @@ export default function Reports() {
     const checkAuth = () => {
       const token = localStorage.getItem('auth_token');
       if (!token) {
-        navigate('/login');
+        navigate('/admin/login');
       } else {
         setAuthChecked(true);
       }
@@ -53,7 +53,7 @@ export default function Reports() {
   const getAuthToken = () => {
     const token = localStorage.getItem('auth_token');
     if (!token) {
-      navigate('/login');
+      navigate('/admin/login');
       return null;
     }
     return token;
@@ -85,7 +85,7 @@ export default function Reports() {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('user_email');
         localStorage.removeItem('is_staff');
-        navigate('/login');
+        navigate('/admin/login');
         return;
       }
 

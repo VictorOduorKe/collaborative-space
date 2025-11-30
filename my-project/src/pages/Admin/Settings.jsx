@@ -12,7 +12,7 @@ export default function SettingsPage() {
     const checkAuth = () => {
       const token = localStorage.getItem('auth_token');
       if (!token) {
-        navigate('/login');
+        navigate('/admin/login');
       } else {
         setAuthChecked(true);
       }
@@ -104,7 +104,7 @@ export default function SettingsPage() {
     try {
       const token = localStorage.getItem('auth_token');
       if (!token) {
-        navigate('/login');
+        navigate('/admin/login');
         return;
       }
       
@@ -130,7 +130,7 @@ export default function SettingsPage() {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('user_email');
         localStorage.removeItem('is_staff');
-        navigate('/login');
+        navigate('/admin/login');
         return;
       }
       
@@ -147,7 +147,7 @@ export default function SettingsPage() {
           localStorage.removeItem('auth_token');
           localStorage.removeItem('user_email');
           localStorage.removeItem('is_staff');
-          navigate('/login');
+          navigate('/admin/login');
           return;
         }
         setErrorMessage(error.response.data.detail || 'Failed to update credentials');

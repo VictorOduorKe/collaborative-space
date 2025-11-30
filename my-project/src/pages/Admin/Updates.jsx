@@ -11,7 +11,7 @@ export default function Updates() {
     const checkAuth = () => {
       const token = localStorage.getItem('auth_token');
       if (!token) {
-        navigate('/login');
+        navigate('/admin/login');
       } else {
         setAuthChecked(true);
       }
@@ -40,7 +40,7 @@ export default function Updates() {
   const getAuthToken = () => {
     const token = localStorage.getItem('auth_token');
     if (!token) {
-      navigate('/login');
+      navigate('/admin/login');
       return null;
     }
     return token;
@@ -62,7 +62,7 @@ export default function Updates() {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('user_email');
         localStorage.removeItem('is_staff');
-        navigate('/login');
+        navigate('/admin/login');
         return;
       }
 
@@ -116,7 +116,7 @@ export default function Updates() {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('user_email');
         localStorage.removeItem('is_staff');
-        navigate('/login');
+        navigate('/admin/login');
         return;
       }
       
