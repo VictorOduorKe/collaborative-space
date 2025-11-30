@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import kenyanFlag from "/src/assets/kenyanflag.png";
+
 import { 
   Menu, 
   X, 
@@ -13,16 +14,14 @@ import {
   Bell,
   Clock
 } from 'lucide-react';
-import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [adminName, setAdminName] = useState('Admin');
   const [newReportsCount, setNewReportsCount] = useState(0);
-  const [loading, setLoading] = useState(true);
   const location = useLocation();
-  
+
   // Determine active nav item based on current path
   const getActiveNavItem = () => {
     const path = location.pathname;
@@ -36,45 +35,6 @@ export default function AdminLayout({ children }) {
   };
 
   const activeNavItem = getActiveNavItem();
-
-  useEffect(() => {
-    // Fetch admin details
-    const fetchAdminDetails = async () => {
-      try {
-        const response = await axios.get('https://gbv-plp-hacks.onrender.com/api/admin/details/', {
-          headers: {
-            'Authorization': `Token ${localStorage.getItem('auth_token')}`
-          }
-        });
-        setAdminName(response.data.name);
-      } catch (error) {
-        console.error('Error fetching admin details:', error);
-      }
-    };
-
-    // Fetch new reports count
-    const fetchNewReportsCount = async () => {
-      try {
-        const response = await axios.get('https://gbv-plp-hacks.onrender.com/api/reports/count/?status=New', {
-          headers: {
-            'Authorization': `Token ${localStorage.getItem('auth_token')}`
-          }
-        });
-        setNewReportsCount(response.data.count);
-      } catch (error) {
-        console.error('Error fetching reports count:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAdminDetails();
-    fetchNewReportsCount();
-
-    // Set up polling for new reports (every 5 minutes)
-    const interval = setInterval(fetchNewReportsCount, 300000);
-    return () => clearInterval(interval);
-  }, []);
 
   const navItems = [
     { name: 'Dashboard', icon: <BarChart2 className="w-5 h-5" /> },

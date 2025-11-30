@@ -1103,7 +1103,7 @@ class UpdateDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ReportsCountView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get(self, request):
         status_filter = request.query_params.get('status', None)
@@ -1118,7 +1118,7 @@ class ReportsCountView(APIView):
 
 
 class AdminDetailsView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get(self, request):
         user = request.user
@@ -1139,6 +1139,7 @@ class SubmitReportView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ListReportsView(ListAPIView):
+    permission_classes = [AllowAny]
     queryset = IncidentReport.objects.all()
     serializer_class = IncidentReportSerializer
 
