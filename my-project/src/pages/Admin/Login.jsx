@@ -1,5 +1,6 @@
 // LoginForm.jsx
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { EyeIcon, EyeOffIcon, Loader2 } from 'lucide-react';
 
@@ -37,6 +38,8 @@ const LoginForm = () => {
 
     if (!formData.password) {
       newErrors.password = 'Password is required';
+    } else if (formData.password.length < 0) {
+      newErrors.password = 'Password must be at least 8 characters';
     }
 
     setErrors(newErrors);
@@ -46,36 +49,39 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-
+  
     setIsLoading(true);
     setLoginError('');
-
+  
     try {
-      const embeddedEmail = 'admin.password@gmail.com';
-      const embeddedPassword = '12345';
-
-      if (
-        formData.email === embeddedEmail &&
-        formData.password === embeddedPassword
-      ) {
-        // Store a simple flag to indicate admin is "logged in" (no real auth)
-        localStorage.setItem('admin_logged_in', 'true');
-        localStorage.setItem('admin_email', embeddedEmail);
-
-        // Generate and store a random auth token for frontend use only
-        const randomToken = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-        localStorage.setItem('auth_token', randomToken);
-
-        // Redirect to admin dashboard
-        navigate('dashboard');
-      } else {
-        setLoginError('Invalid admin email or password');
-      }
-
+      const response = await axios.post('http://localhost:8000/api/login/', {
+        email: formData.email,
+        password: formData.password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+  
+      // Store token and user data
+      localStorage.setItem('auth_token', response.data.token);
+      localStorage.setItem('user_email', response.data.email);
+      localStorage.setItem('is_staff', response.data.is_staff);
+  
+      // Redirect to dashboard
+      navigate('dashboard');
+  
     } catch (error) {
       console.error('Login error:', error);
       
-      setLoginError('Login failed. Please try again.');
+      let errorMessage = 'Login failed. Please try again.';
+      if (error.response?.data?.detail) {
+        errorMessage = error.response.data.detail;
+      } else if (error.response?.status === 401) {
+        errorMessage = 'Invalid email or password';
+      }
+      
+      setLoginError(errorMessage);
     } finally {
       setIsLoading(false);
     }

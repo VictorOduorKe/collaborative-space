@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import { 
   AlertCircle,
   Bell,
@@ -13,8 +12,25 @@ import {
   Download,
   RefreshCw
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const [authChecked, setAuthChecked] = useState(false);
+  
+  // Check authentication on component mount
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem('auth_token');
+      if (!token) {
+        navigate('/login');
+      } else {
+        setAuthChecked(true);
+      }
+    };
+
+    checkAuth();
+  }, [navigate]);
 
   // Rest of your existing state
   const [reports, setReports] = useState([]);
@@ -30,25 +46,41 @@ export default function Dashboard() {
   const [showModal, setShowModal] = useState(false);
   const [selectedReport, setSelectedReport] = useState(null);
   const [fullscreenImage, setFullscreenImage] = useState(false);
-
+  
   // Define the media URL base - adjust this to match your Django settings
   const MEDIA_URL = 'https://gbv-plp-hacks.onrender.com/';
-
+  
   // Fetch reports from API
   const fetchReports = async () => {
     try {
       setLoading(true);
+      const token = localStorage.getItem('auth_token');
+      
+      if (!token) {
+        navigate('/login');
+        return;
+      }
 
       const response = await fetch('https://gbv-plp-hacks.onrender.com/api/reports/list/', {
         headers: {
+          'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
         }
       });
+      
+      if (response.status === 401) {
+        // Token is invalid or expired
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('user_email');
+        localStorage.removeItem('is_staff');
+        navigate('/login');
+        return;
+      }
 
       if (!response.ok) {
         throw new Error('Failed to fetch reports');
       }
-
+      
       const data = await response.json();
       setReports(data);
       processReportsData(data);
@@ -212,9 +244,18 @@ export default function Dashboard() {
     { text: 'New message from support', time: '1 hour ago', type: 'message' }
   ];
 
+    if (!authChecked) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p>Loading dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-
       <div className="max-w-7xl mx-auto">
         {error && (
           <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-lg">

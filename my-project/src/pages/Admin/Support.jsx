@@ -22,7 +22,7 @@ export default function Support() {
     const checkAuth = () => {
       const token = localStorage.getItem('auth_token');
       if (!token) {
-        navigate('/admin/login');
+        navigate('/login');
       } else {
         setAuthChecked(true);
       }
@@ -49,7 +49,7 @@ export default function Support() {
   const getAuthToken = () => {
     const token = localStorage.getItem('auth_token');
     if (!token) {
-      navigate('/admin/login');
+      navigate('/login');
       return null;
     }
     return token;
@@ -71,7 +71,7 @@ export default function Support() {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('user_email');
         localStorage.removeItem('is_staff');
-        navigate('/admin/login');
+        navigate('/login');
         return;
       }
 
@@ -125,7 +125,7 @@ export default function Support() {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('user_email');
         localStorage.removeItem('is_staff');
-        navigate('/admin/login');
+        navigate('/login');
         return;
       }
       
