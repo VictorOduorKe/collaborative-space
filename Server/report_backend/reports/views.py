@@ -799,7 +799,7 @@ def fetch_instructions(request):
 
             # Gemini API configuration
             GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-            API_KEY = "AIzaSyBPRVACGYu9QtkrlJ8wzGBtbHpoHTJelaQ"
+            API_KEY = os.getenv('GEMINI_API_KEY')
             
             prompt = (
                 f"Provide 3-5 concise bullet points for personal safety steps an individual can take during {category}. "
